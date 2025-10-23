@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional QR Code Generator - Create QR codes from text, URLs, JSON files, and VCF contact files. Fast, secure, and mobile-friendly QR code generation tool.">
+    <meta name="keywords" content="QR code generator, QR code, contact QR, JSON QR, VCF QR, barcode generator, mobile QR scanner">
+    <meta name="author" content="QR Code Generator">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/qr-code-generator/">
+    <meta property="og:title" content="Professional QR Code Generator - Free Online Tool">
+    <meta property="og:description" content="Generate QR codes instantly from text, URLs, JSON files, and VCF contact files. Professional, fast, and mobile-friendly QR code generator.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourusername.github.io/qr-code-generator/">
+    <meta property="twitter:title" content="Professional QR Code Generator">
+    <meta property="twitter:description" content="Generate QR codes instantly from text, URLs, JSON files, and VCF contact files.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "QR Code Generator",
+        "description": "Professional QR Code Generator for creating QR codes from text, URLs, JSON files, and VCF contact files",
+        "applicationCategory": "Utility",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Text to QR Code",
+            "URL to QR Code", 
+            "JSON file to QR Code",
+            "VCF contact file to QR Code",
+            "Multiple image formats (PNG, JPG, BMP, TIFF)",
+            "Mobile responsive design",
+            "Instant download"
+        ]
+    }
+    </script>
+
+    <title>Professional QR Code Generator - Free Online Tool</title>
+    <link rel="canonical" href="https://yourusername.github.io/qr-code-generator/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236366f1'/><rect x='10' y='10' width='20' height='20' fill='white'/><rect x='40' y='10' width='20' height='20' fill='white'/><rect x='70' y='10' width='20' height='20' fill='white'/></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- QR Code Generation Library -->
+    <script src="https://unpkg.com/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-qrcode"></i>
+            </div>
+            <h1 class="hero-title">Professional QR Code Generator</h1>
+            <p class="hero-subtitle">Create stunning QR codes from text, URLs, JSON files, and VCF contact files instantly</p>
+            <div class="hero-features">
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Friendly</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-download"></i>
+                    <span>Instant Download</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Secure</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Multiple Formats</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Application -->
+    <main class="main-container">
+        <div class="app-card">
+            <form id="qrForm">
+                <!-- Input Section -->
+                <div class="input-section">
+                    <h2><i class="fas fa-edit"></i> Input Your Data</h2>
+
+                    <!-- Text Input -->
+                    <div class="input-group">
+                        <label for="text_input">Enter Text, JSON, or URL:</label>
+                        <textarea 
+                            id="text_input" 
+                            name="text_input" 
+                            placeholder="Enter your text, JSON data, or URL here...
+
+Example:
+- Simple text: Hello World!
+- URL: https://example.com
+- JSON: {&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:30}
+- Contact info, etc."
+                            rows="6"
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> characters
+                        </div>
+                    </div>
+
+                    <!-- File Upload Options -->
+                    <div class="upload-section">
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="file-uploads">
+                            <!-- VCF File Upload -->
+                            <div class="file-upload-group">
+                                <label class="file-upload-label" for="vcf_file">
+                                    <i class="fas fa-address-book"></i>
+                                    <span>Upload VCF Contact</span>
+                                    <input type="file" name="vcf_file" id="vcf_file" accept=".vcf" hidden>
+                                </label>
+                                <div class="file-info" id="vcf_info"></div>
+                            </div>
+
+                            <!-- JSON File Upload -->
+                            <div class="file-upload-group">
+                                <label class="file-upload-label" for="json_file">
+                                    <i class="fas fa-file-code"></i>
+                                    <span>Upload JSON File</span>
+                                    <input type="file" name="json_file" id="json_file" accept=".json" hidden>
+                                </label>
+                                <div class="file-info" id="json_info"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Format Selection -->
+                    <div class="input-group">
+                        <label for="format">Select Output Format:</label>
+                        <select id="format" name="format">
+                            <option value="png">PNG (Recommended)</option>
+                            <option value="jpeg">JPG</option>
+                            <option value="webp">WEBP</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Generate Button -->
+                <div class="button-section">
+                    <button type="submit" id="generateBtn" class="generate-btn">
+                        <i class="fas fa-magic"></i>
+                        <span>Generate QR Code</span>
+                        <div class="loading-spinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="result-header">
+                    <h3><i class="fas fa-check-circle"></i> QR Code Generated Successfully!</h3>
+                    <div class="input-type-badge" id="inputTypeBadge"></div>
+                </div>
+
+                <div class="qr-display" id="qrDisplay">
+                    <!-- QR Code will be inserted here -->
+                </div>
+
+                <div class="download-section">
+                    <button id="downloadBtn" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span>Download QR Code</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="errorSection" class="error-section" style="display: none;">
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="errorText"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Our QR Code Generator?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Generate QR codes instantly with our optimized processing engine</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-import"></i>
+                    </div>
+                    <h3>Multiple Input Types</h3>
+                    <p>Support for text, URLs, JSON files, and VCF contact files</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Various Formats</h3>
+                    <p>Download in PNG, JPG, or WEBP formats</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your data is processed locally in your browser and never sent to any server</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 QR Code Generator. Built with <i class="fas fa-heart"></i> using JavaScript.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">
+                100% Client-Side • No Data Sent to Server • Open Source
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
