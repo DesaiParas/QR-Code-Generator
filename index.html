@@ -259,22 +259,7 @@ Example:
             <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">
                 100% Client-Side • No Data Sent to Server • Open Source
             </p>
-             <img src="https://hitscounter.dev/count/tag.svg?url=https%3A%2F%2Fdesaiparas.github.io%2Fqr-code-generator&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&title=visits&edge_flat=false" alt="Visitor Count"/>
         </div>
-        <div id="visit-count" style="margin-top:10px; font-weight:600;">
-              Loading visitor count…
-        </div>
-        <script>
-          const key = "qr_code_generator_visits";
-          const namespace = "yourusername.github.io";
-          fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-            .then(res => res.json())
-            .then(data => {
-              document.getElementById("visit-count").textContent =
-                `Total Visitors: ${data.value}`;
-            });
-        </script>
-      
     </footer>
 
     <script src="script.js"></script>
